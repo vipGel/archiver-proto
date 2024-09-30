@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  go:
+    cmds:
+      - protoc -I protos/ --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative protos/archiver_service.proto
+
+  dart:
+    cmds:
+      - protoc -I protos/ --dart_out=./gen/dart/ protos/archiver_service.proto
+
+  generate:
+    deps:
+      - go
+      - dart
+    cmds:
+      - git add .
