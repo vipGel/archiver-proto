@@ -19,29 +19,29 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LLMService_Pack_FullMethodName   = "/connector.LLMService/Pack"
-	LLMService_Unpack_FullMethodName = "/connector.LLMService/Unpack"
+	Service_Pack_FullMethodName   = "/connector.Service/Pack"
+	Service_Unpack_FullMethodName = "/connector.Service/Unpack"
 )
 
-// LLMServiceClient is the client API for LLMService service.
+// ServiceClient is the client API for Service service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type LLMServiceClient interface {
+type ServiceClient interface {
 	Pack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[PackRequest, PackResponse], error)
 	Unpack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[UnpackRequest, UnpackResponse], error)
 }
 
-type lLMServiceClient struct {
+type serviceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewLLMServiceClient(cc grpc.ClientConnInterface) LLMServiceClient {
-	return &lLMServiceClient{cc}
+func NewServiceClient(cc grpc.ClientConnInterface) ServiceClient {
+	return &serviceClient{cc}
 }
 
-func (c *lLMServiceClient) Pack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[PackRequest, PackResponse], error) {
+func (c *serviceClient) Pack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[PackRequest, PackResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &LLMService_ServiceDesc.Streams[0], LLMService_Pack_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Service_ServiceDesc.Streams[0], Service_Pack_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,11 +50,11 @@ func (c *lLMServiceClient) Pack(ctx context.Context, opts ...grpc.CallOption) (g
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMService_PackClient = grpc.BidiStreamingClient[PackRequest, PackResponse]
+type Service_PackClient = grpc.BidiStreamingClient[PackRequest, PackResponse]
 
-func (c *lLMServiceClient) Unpack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[UnpackRequest, UnpackResponse], error) {
+func (c *serviceClient) Unpack(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[UnpackRequest, UnpackResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &LLMService_ServiceDesc.Streams[1], LLMService_Unpack_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Service_ServiceDesc.Streams[1], Service_Unpack_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,82 +63,82 @@ func (c *lLMServiceClient) Unpack(ctx context.Context, opts ...grpc.CallOption) 
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMService_UnpackClient = grpc.BidiStreamingClient[UnpackRequest, UnpackResponse]
+type Service_UnpackClient = grpc.BidiStreamingClient[UnpackRequest, UnpackResponse]
 
-// LLMServiceServer is the server API for LLMService service.
-// All implementations must embed UnimplementedLLMServiceServer
+// ServiceServer is the server API for Service service.
+// All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
-type LLMServiceServer interface {
+type ServiceServer interface {
 	Pack(grpc.BidiStreamingServer[PackRequest, PackResponse]) error
 	Unpack(grpc.BidiStreamingServer[UnpackRequest, UnpackResponse]) error
-	mustEmbedUnimplementedLLMServiceServer()
+	mustEmbedUnimplementedServiceServer()
 }
 
-// UnimplementedLLMServiceServer must be embedded to have
+// UnimplementedServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedLLMServiceServer struct{}
+type UnimplementedServiceServer struct{}
 
-func (UnimplementedLLMServiceServer) Pack(grpc.BidiStreamingServer[PackRequest, PackResponse]) error {
+func (UnimplementedServiceServer) Pack(grpc.BidiStreamingServer[PackRequest, PackResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method Pack not implemented")
 }
-func (UnimplementedLLMServiceServer) Unpack(grpc.BidiStreamingServer[UnpackRequest, UnpackResponse]) error {
+func (UnimplementedServiceServer) Unpack(grpc.BidiStreamingServer[UnpackRequest, UnpackResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method Unpack not implemented")
 }
-func (UnimplementedLLMServiceServer) mustEmbedUnimplementedLLMServiceServer() {}
-func (UnimplementedLLMServiceServer) testEmbeddedByValue()                    {}
+func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
+func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
 
-// UnsafeLLMServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to LLMServiceServer will
+// UnsafeServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ServiceServer will
 // result in compilation errors.
-type UnsafeLLMServiceServer interface {
-	mustEmbedUnimplementedLLMServiceServer()
+type UnsafeServiceServer interface {
+	mustEmbedUnimplementedServiceServer()
 }
 
-func RegisterLLMServiceServer(s grpc.ServiceRegistrar, srv LLMServiceServer) {
-	// If the following call pancis, it indicates UnimplementedLLMServiceServer was
+func RegisterServiceServer(s grpc.ServiceRegistrar, srv ServiceServer) {
+	// If the following call pancis, it indicates UnimplementedServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&LLMService_ServiceDesc, srv)
+	s.RegisterService(&Service_ServiceDesc, srv)
 }
 
-func _LLMService_Pack_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LLMServiceServer).Pack(&grpc.GenericServerStream[PackRequest, PackResponse]{ServerStream: stream})
-}
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMService_PackServer = grpc.BidiStreamingServer[PackRequest, PackResponse]
-
-func _LLMService_Unpack_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LLMServiceServer).Unpack(&grpc.GenericServerStream[UnpackRequest, UnpackResponse]{ServerStream: stream})
+func _Service_Pack_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ServiceServer).Pack(&grpc.GenericServerStream[PackRequest, PackResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMService_UnpackServer = grpc.BidiStreamingServer[UnpackRequest, UnpackResponse]
+type Service_PackServer = grpc.BidiStreamingServer[PackRequest, PackResponse]
 
-// LLMService_ServiceDesc is the grpc.ServiceDesc for LLMService service.
+func _Service_Unpack_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ServiceServer).Unpack(&grpc.GenericServerStream[UnpackRequest, UnpackResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Service_UnpackServer = grpc.BidiStreamingServer[UnpackRequest, UnpackResponse]
+
+// Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var LLMService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "connector.LLMService",
-	HandlerType: (*LLMServiceServer)(nil),
+var Service_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "connector.Service",
+	HandlerType: (*ServiceServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Pack",
-			Handler:       _LLMService_Pack_Handler,
+			Handler:       _Service_Pack_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "Unpack",
-			Handler:       _LLMService_Unpack_Handler,
+			Handler:       _Service_Unpack_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},

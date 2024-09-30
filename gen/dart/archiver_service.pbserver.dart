@@ -20,7 +20,7 @@ import 'archiver_service.pbjson.dart';
 
 export 'archiver_service.pb.dart';
 
-abstract class LLMServiceBase extends $pb.GeneratedService {
+abstract class ServiceBase extends $pb.GeneratedService {
   $async.Future<$0.PackResponse> pack($pb.ServerContext ctx, $0.PackRequest request);
   $async.Future<$0.UnpackResponse> unpack($pb.ServerContext ctx, $0.UnpackRequest request);
 
@@ -40,7 +40,7 @@ abstract class LLMServiceBase extends $pb.GeneratedService {
     }
   }
 
-  $core.Map<$core.String, $core.dynamic> get $json => LLMServiceBase$json;
-  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> get $messageJson => LLMServiceBase$messageJson;
+  $core.Map<$core.String, $core.dynamic> get $json => ServiceBase$json;
+  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> get $messageJson => ServiceBase$messageJson;
 }
 

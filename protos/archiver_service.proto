@@ -4,7 +4,7 @@ package connector;
 
 option go_package = "archiver.v1;archiver";
 
-service LLMService {
+service Service {
   rpc Pack(stream PackRequest) returns(stream PackResponse);
   rpc Unpack(stream UnpackRequest) returns(stream UnpackResponse);
 }

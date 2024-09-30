@@ -284,15 +284,15 @@ class UnpackResponse extends $pb.GeneratedMessage {
   void clearChunk() => clearField(2);
 }
 
-class LLMServiceApi {
+class ServiceApi {
   $pb.RpcClient _client;
-  LLMServiceApi(this._client);
+  ServiceApi(this._client);
 
   $async.Future<PackResponse> pack($pb.ClientContext? ctx, PackRequest request) =>
-    _client.invoke<PackResponse>(ctx, 'LLMService', 'Pack', request, PackResponse())
+    _client.invoke<PackResponse>(ctx, 'Service', 'Pack', request, PackResponse())
   ;
   $async.Future<UnpackResponse> unpack($pb.ClientContext? ctx, UnpackRequest request) =>
-    _client.invoke<UnpackResponse>(ctx, 'LLMService', 'Unpack', request, UnpackResponse())
+    _client.invoke<UnpackResponse>(ctx, 'Service', 'Unpack', request, UnpackResponse())
   ;
 }
 
