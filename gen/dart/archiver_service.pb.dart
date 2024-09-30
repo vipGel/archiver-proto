@@ -9,7 +9,6 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -282,18 +281,6 @@ class UnpackResponse extends $pb.GeneratedMessage {
   $core.bool hasChunk() => $_has(1);
   @$pb.TagNumber(2)
   void clearChunk() => clearField(2);
-}
-
-class ServiceApi {
-  $pb.RpcClient _client;
-  ServiceApi(this._client);
-
-  $async.Future<PackResponse> pack($pb.ClientContext? ctx, PackRequest request) =>
-    _client.invoke<PackResponse>(ctx, 'Service', 'Pack', request, PackResponse())
-  ;
-  $async.Future<UnpackResponse> unpack($pb.ClientContext? ctx, UnpackRequest request) =>
-    _client.invoke<UnpackResponse>(ctx, 'Service', 'Unpack', request, UnpackResponse())
-  ;
 }
 
 

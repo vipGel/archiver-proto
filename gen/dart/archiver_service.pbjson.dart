@@ -70,25 +70,3 @@ final $typed_data.Uint8List unpackResponseDescriptor = $convert.base64Decode(
     'Cg5VbnBhY2tSZXNwb25zZRIbCglmaWxlX25hbWUYASABKAlSCGZpbGVOYW1lEhQKBWNodW5rGA'
     'IgASgMUgVjaHVuaw==');
 
-const $core.Map<$core.String, $core.dynamic> ServiceBase$json = {
-  '1': 'Service',
-  '2': [
-    {'1': 'Pack', '2': '.connector.PackRequest', '3': '.connector.PackResponse', '5': true, '6': true},
-    {'1': 'Unpack', '2': '.connector.UnpackRequest', '3': '.connector.UnpackResponse', '5': true, '6': true},
-  ],
-};
-
-@$core.Deprecated('Use serviceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> ServiceBase$messageJson = {
-  '.connector.PackRequest': PackRequest$json,
-  '.connector.PackResponse': PackResponse$json,
-  '.connector.UnpackRequest': UnpackRequest$json,
-  '.connector.UnpackResponse': UnpackResponse$json,
-};
-
-/// Descriptor for `Service`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List serviceDescriptor = $convert.base64Decode(
-    'CgdTZXJ2aWNlEjsKBFBhY2sSFi5jb25uZWN0b3IuUGFja1JlcXVlc3QaFy5jb25uZWN0b3IuUG'
-    'Fja1Jlc3BvbnNlKAEwARJBCgZVbnBhY2sSGC5jb25uZWN0b3IuVW5wYWNrUmVxdWVzdBoZLmNv'
-    'bm5lY3Rvci5VbnBhY2tSZXNwb25zZSgBMAE=');
-

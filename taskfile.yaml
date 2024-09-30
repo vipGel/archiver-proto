@@ -7,7 +7,7 @@ tasks:
 
   dart:
     cmds:
-      - protoc -I protos/ --dart_out=./gen/dart/ protos/archiver_service.proto
+      - protoc -I protos/ --dart_out=grpc:./gen/dart/ protos/archiver_service.proto
 
   generate:
     deps:
