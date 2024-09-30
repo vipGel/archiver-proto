@@ -1,4 +1,4 @@
-module archiver-proto
+module github.com/vipGel/archiver-proto
 
 go 1.22
 
