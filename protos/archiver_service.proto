@@ -23,7 +23,7 @@ message PackResponse {
 
 message UnpackRequest {
   string file_name = 1;
-  //  string extension = 2;
+    string extension = 2;
   //  bytes chunk = 3;
 }
 
