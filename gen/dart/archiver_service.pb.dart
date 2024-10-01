@@ -115,12 +115,12 @@ class PackResponse extends $pb.GeneratedMessage {
 
 class UnpackRequest extends $pb.GeneratedMessage {
   factory UnpackRequest({
-    $core.String? fileName,
+    $core.String? filePath,
     $core.String? extension_2,
   }) {
     final $result = create();
-    if (fileName != null) {
-      $result.fileName = fileName;
+    if (filePath != null) {
+      $result.filePath = filePath;
     }
     if (extension_2 != null) {
       $result.extension_2 = extension_2;
@@ -132,7 +132,7 @@ class UnpackRequest extends $pb.GeneratedMessage {
   factory UnpackRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UnpackRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'connector'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'fileName')
+    ..aOS(1, _omitFieldNames ? '' : 'filePath')
     ..aOS(2, _omitFieldNames ? '' : 'extension')
     ..hasRequiredFields = false
   ;
@@ -159,13 +159,13 @@ class UnpackRequest extends $pb.GeneratedMessage {
   static UnpackRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get fileName => $_getSZ(0);
+  $core.String get filePath => $_getSZ(0);
   @$pb.TagNumber(1)
-  set fileName($core.String v) { $_setString(0, v); }
+  set filePath($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasFileName() => $_has(0);
+  $core.bool hasFilePath() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFileName() => clearField(1);
+  void clearFilePath() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get extension_2 => $_getSZ(1);
