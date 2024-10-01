@@ -36,12 +36,12 @@ class ServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseStream<$0.PackResponse> pack($async.Stream<$0.PackRequest> request, {$grpc.CallOptions? options}) {
-    return $createStreamingCall(_$pack, request, options: options);
+  $grpc.ResponseFuture<$0.PackResponse> pack($0.PackRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$pack, request, options: options);
   }
 
-  $grpc.ResponseStream<$0.UnpackResponse> unpack($async.Stream<$0.UnpackRequest> request, {$grpc.CallOptions? options}) {
-    return $createStreamingCall(_$unpack, request, options: options);
+  $grpc.ResponseFuture<$0.UnpackResponse> unpack($0.UnpackRequest request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$unpack, request, options: options);
   }
 }
 
@@ -52,20 +52,28 @@ abstract class ServiceBase extends $grpc.Service {
   ServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.PackRequest, $0.PackResponse>(
         'Pack',
-        pack,
-        true,
-        true,
+        pack_Pre,
+        false,
+        false,
         ($core.List<$core.int> value) => $0.PackRequest.fromBuffer(value),
         ($0.PackResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UnpackRequest, $0.UnpackResponse>(
         'Unpack',
-        unpack,
-        true,
-        true,
+        unpack_Pre,
+        false,
+        false,
         ($core.List<$core.int> value) => $0.UnpackRequest.fromBuffer(value),
         ($0.UnpackResponse value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$0.PackResponse> pack($grpc.ServiceCall call, $async.Stream<$0.PackRequest> request);
-  $async.Stream<$0.UnpackResponse> unpack($grpc.ServiceCall call, $async.Stream<$0.UnpackRequest> request);
+  $async.Future<$0.PackResponse> pack_Pre($grpc.ServiceCall call, $async.Future<$0.PackRequest> request) async {
+    return pack(call, await request);
+  }
+
+  $async.Future<$0.UnpackResponse> unpack_Pre($grpc.ServiceCall call, $async.Future<$0.UnpackRequest> request) async {
+    return unpack(call, await request);
+  }
+
+  $async.Future<$0.PackResponse> pack($grpc.ServiceCall call, $0.PackRequest request);
+  $async.Future<$0.UnpackResponse> unpack($grpc.ServiceCall call, $0.UnpackRequest request);
 }

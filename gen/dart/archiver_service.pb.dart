@@ -15,15 +15,11 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class PackRequest extends $pb.GeneratedMessage {
   factory PackRequest({
-    $core.String? fileName,
-    $core.List<$core.int>? chunk,
+    $core.String? filePath,
   }) {
     final $result = create();
-    if (fileName != null) {
-      $result.fileName = fileName;
-    }
-    if (chunk != null) {
-      $result.chunk = chunk;
+    if (filePath != null) {
+      $result.filePath = filePath;
     }
     return $result;
   }
@@ -32,8 +28,7 @@ class PackRequest extends $pb.GeneratedMessage {
   factory PackRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PackRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'connector'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'fileName')
-    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'chunk', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'filePath')
     ..hasRequiredFields = false
   ;
 
@@ -59,35 +54,22 @@ class PackRequest extends $pb.GeneratedMessage {
   static PackRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get fileName => $_getSZ(0);
+  $core.String get filePath => $_getSZ(0);
   @$pb.TagNumber(1)
-  set fileName($core.String v) { $_setString(0, v); }
+  set filePath($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasFileName() => $_has(0);
+  $core.bool hasFilePath() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFileName() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.int> get chunk => $_getN(1);
-  @$pb.TagNumber(2)
-  set chunk($core.List<$core.int> v) { $_setBytes(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasChunk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearChunk() => clearField(2);
+  void clearFilePath() => clearField(1);
 }
 
 class PackResponse extends $pb.GeneratedMessage {
   factory PackResponse({
-    $core.String? fileName,
-    $core.List<$core.int>? chunk,
+    $core.String? filePath,
   }) {
     final $result = create();
-    if (fileName != null) {
-      $result.fileName = fileName;
-    }
-    if (chunk != null) {
-      $result.chunk = chunk;
+    if (filePath != null) {
+      $result.filePath = filePath;
     }
     return $result;
   }
@@ -96,8 +78,7 @@ class PackResponse extends $pb.GeneratedMessage {
   factory PackResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PackResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'connector'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'fileName')
-    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'chunk', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'filePath')
     ..hasRequiredFields = false
   ;
 
@@ -123,39 +104,22 @@ class PackResponse extends $pb.GeneratedMessage {
   static PackResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get fileName => $_getSZ(0);
+  $core.String get filePath => $_getSZ(0);
   @$pb.TagNumber(1)
-  set fileName($core.String v) { $_setString(0, v); }
+  set filePath($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasFileName() => $_has(0);
+  $core.bool hasFilePath() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFileName() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.int> get chunk => $_getN(1);
-  @$pb.TagNumber(2)
-  set chunk($core.List<$core.int> v) { $_setBytes(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasChunk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearChunk() => clearField(2);
+  void clearFilePath() => clearField(1);
 }
 
 class UnpackRequest extends $pb.GeneratedMessage {
   factory UnpackRequest({
     $core.String? fileName,
-    $core.String? extension_2,
-    $core.List<$core.int>? chunk,
   }) {
     final $result = create();
     if (fileName != null) {
       $result.fileName = fileName;
-    }
-    if (extension_2 != null) {
-      $result.extension_2 = extension_2;
-    }
-    if (chunk != null) {
-      $result.chunk = chunk;
     }
     return $result;
   }
@@ -165,8 +129,6 @@ class UnpackRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UnpackRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'connector'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'fileName')
-    ..aOS(2, _omitFieldNames ? '' : 'extension')
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'chunk', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
@@ -199,37 +161,15 @@ class UnpackRequest extends $pb.GeneratedMessage {
   $core.bool hasFileName() => $_has(0);
   @$pb.TagNumber(1)
   void clearFileName() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get extension_2 => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set extension_2($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasExtension_2() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearExtension_2() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get chunk => $_getN(2);
-  @$pb.TagNumber(3)
-  set chunk($core.List<$core.int> v) { $_setBytes(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasChunk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearChunk() => clearField(3);
 }
 
 class UnpackResponse extends $pb.GeneratedMessage {
   factory UnpackResponse({
-    $core.String? fileName,
-    $core.List<$core.int>? chunk,
+    $core.String? filePath,
   }) {
     final $result = create();
-    if (fileName != null) {
-      $result.fileName = fileName;
-    }
-    if (chunk != null) {
-      $result.chunk = chunk;
+    if (filePath != null) {
+      $result.filePath = filePath;
     }
     return $result;
   }
@@ -238,8 +178,7 @@ class UnpackResponse extends $pb.GeneratedMessage {
   factory UnpackResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UnpackResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'connector'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'fileName')
-    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'chunk', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'filePath')
     ..hasRequiredFields = false
   ;
 
@@ -265,22 +204,13 @@ class UnpackResponse extends $pb.GeneratedMessage {
   static UnpackResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get fileName => $_getSZ(0);
+  $core.String get filePath => $_getSZ(0);
   @$pb.TagNumber(1)
-  set fileName($core.String v) { $_setString(0, v); }
+  set filePath($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasFileName() => $_has(0);
+  $core.bool hasFilePath() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFileName() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.int> get chunk => $_getN(1);
-  @$pb.TagNumber(2)
-  set chunk($core.List<$core.int> v) { $_setBytes(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasChunk() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearChunk() => clearField(2);
+  void clearFilePath() => clearField(1);
 }
 
 
